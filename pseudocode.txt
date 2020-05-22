@@ -1,0 +1,44 @@
+server.js file:
+    - Require dependencies (express)
+    - Create PORT
+    - Create an express server and start it (app.listen on bottom)
+    - Set up Express app & handle data parsing with json
+    - Require the routes for the server
+
+htmlRoutes.js file:
+    - Require dependencies (path)
+    - Create a GET route to '/survey' which will be the survey page
+    - Create a default, catch-all route '*' that goes to the home.html
+    - Export the HTML GET requests which handles when a user "visits" a page (module.exports)
+
+apiRoutes.js file:
+    - Load app data by requiring it
+    - Create a GET route '/api/friends' which will display a json of all friends
+    - Create a POST route '/api/friends' which will handle incoming survey results, and handle the compatibility logic
+
+App's Data:
+    - Save in 'app/data/friends.js' as an array of objects formatted as follows
+    {
+    "name":"Ahmed",
+    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "scores":[
+      5,
+      1,
+      4,
+      4,
+      5,
+      1,
+      2,
+      5,
+      4,
+      1
+    ]
+}
+
+Determine friend compatibility:
+    - Convert results into an array (push) (ex: [5, 1, 4, 4, 5, 1, 2, 5, 4, 1])
+    - Compare difference between current user's score against other users question by question
+    - Add up the differences to calculate the total difference
+        * Use absolute values of differences so no negative solutions.
+        * Closest match will be the user with least number of difference
+    - Once current user's most compatible friend is found, create a modal pop-up displaying the result
