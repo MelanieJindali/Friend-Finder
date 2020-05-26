@@ -6,6 +6,7 @@
     <title>Friend Survey</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -19,18 +20,18 @@
             <br>
             <div class="form-group">
                 <p>Name (Required)</p>
-                <input type="name" class="form-control" required>
+                <input id="name" type="name" class="form-control" required>
             </div>
             <div class="form-group my-5">
                 <p>Link to an Image (Required)</p>
-                <input type="name" class="form-control" required>
+                <input id="photo" class="form-control" required>
             </div>
             <hr>
             <div class="form-group">
                 <div class="survey my-5">
                     <h2>Question 1</h2>
                     <p>Chocolate is better than Vanilla.</p>
-                    <select class="form-control">
+                    <select class="form-control" id="q1">
                       <option>1 (Strongly Disagree)</option>
                       <option>2</option>
                       <option>3</option>
@@ -42,7 +43,7 @@
                 <div class="survey my-5">
                     <h2>Question 2</h2>
                     <p>You like to get out of your comfort-zone.</p>
-                    <select class="form-control">
+                    <select class="form-control" id="q2">
                     <option>1 (Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -54,7 +55,7 @@
                 <div class="survey my-5">
                     <h2>Question 3</h2>
                     <p>You enjoy meeting new people.</p>
-                    <select class="form-control">
+                    <select class="form-control" id="q3">
                     <option>1 (Strongly Disagree)</option>
                     <option>2</option>
                     <option>3</option>
@@ -66,7 +67,7 @@
                 <div class="survey my-5">
                     <h2>Question 4</h2>
                     <p>Cats are better pets than dogs.</p>
-                    <select class="form-control">
+                    <select class="form-control" id="q4">
                       <option>1 (Strongly Disagree)</option>
                       <option>2</option>
                       <option>3</option>
@@ -78,7 +79,7 @@
                 <div class="survey my-5">
                     <h2>Question 5</h2>
                     <p>Traveling is fun.</p>
-                    <select class="form-control">
+                    <select class="form-control" id="q5">
                       <option>1 (Strongly Disagree)</option>
                       <option>2</option>
                       <option>3</option>
@@ -90,7 +91,7 @@
                 <div class="survey my-5">
                     <h2>Question 6</h2>
                     <p>You have a vivid imagination.</p>
-                    <select class="form-control">
+                    <select class="form-control" id="q6">
                       <option>1 (Strongly Disagree)</option>
                       <option>2</option>
                       <option>3</option>
@@ -102,7 +103,7 @@
                 <div class="survey my-5">
                     <h2>Question 7</h2>
                     <p>You love large parties.</p>
-                    <select class="form-control">
+                    <select class="form-control" id="q7">
                       <option>1 (Strongly Disagree)</option>
                       <option>2</option>
                       <option>3</option>
@@ -114,7 +115,7 @@
                 <div class="survey my-5">
                     <h2>Question 8</h2>
                     <p>It is easy for you to relate to other people's feelings.</p>
-                    <select class="form-control">
+                    <select class="form-control" id="q8">
                       <option>1 (Strongly Disagree)</option>
                       <option>2</option>
                       <option>3</option>
@@ -126,7 +127,7 @@
                 <div class="survey my-5">
                     <h2>Question 9</h2>
                     <p>You would rather stay home than go out on a weekend.</p>
-                    <select class="form-control">
+                    <select class="form-control" id="q9">
                       <option>1 (Strongly Disagree)</option>
                       <option>2</option>
                       <option>3</option>
@@ -138,7 +139,7 @@
                 <div class="survey my-5">
                     <h2>Question 10</h2>
                     <p>It is difficult for you to trust in others.</p>
-                    <select class="form-control">
+                    <select class="form-control" id="q10">
                       <option>1 (Strongly Disagree)</option>
                       <option>2</option>
                       <option>3</option>
@@ -152,6 +153,31 @@
         </form>
         
     </div>
-    
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#submit').on("click", function(event) {
+            event.preventDefault();
+            var newFriend = {
+                name: $('#name').val().trim(),
+                photo: $('#photo').val().trim(),
+                scores: [
+                $('#q1').val(),
+                $('#q2').val(),
+                $('#q3').val(),
+                $('#q4').val(),
+                $('#q5').val(),
+                $('#q6').val(),
+                $('#q7').val(),
+                $('#q8').val(),
+                $('#q9').val(),
+                $('#q10').val()
+                ]
+
+            };
+        });
+    });
+</script>
 </body>
 </html>
