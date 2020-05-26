@@ -6,7 +6,7 @@
     <title>Friend Survey</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -154,8 +154,8 @@
         
     </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-<script type="text/javascript">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
     $(document).ready(function() {
         $('#submit').on("click", function(event) {
             event.preventDefault();
@@ -174,8 +174,27 @@
                 $('#q9').val(),
                 $('#q10').val()
                 ]
-
             };
+
+            // POST data to friends.js
+            $.post("/api/friends", newFriend).then(function(data) {
+                // console.log("friend data:", data);
+            });
+
+            // Clear form inputs
+            $('#name').val("");
+            $('#photo').val("");
+            $('#q1').val("");
+            $('#q2').val("");
+            $('#q3').val("");
+            $('#q4').val("");
+            $('#q5').val("");
+            $('#q6').val("");
+            $('#q7').val("");
+            $('#q8').val("");
+            $('#q9').val("");
+            $('#q10').val("");
+
         });
     });
 </script>
