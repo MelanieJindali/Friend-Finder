@@ -24,7 +24,8 @@ module.exports = function(app) {
 
             // Setting new vals to variables for the next iterated comparison
             if (totalDiff < minDiff) {
-                bestie = i;
+                var bestieNm = friends[i].name;
+                var bestieImg = friends[i].photo;
                 minDiff = totalDiff;
             };
         };
@@ -32,8 +33,8 @@ module.exports = function(app) {
         // console.log("Total difference: " + diff)
 
         friends.push(req.body); // Add new friend to friends array
-        res.json(friends[bestie]); // Send back response to browser the best friend match
-        console.log("Your new best friend is: " + bestie);
+        res.json({ status: 'OK', name: bestieNm, photo: bestieImg }); // Send back response to browser the best friend match
+        console.log("Your new best friend is: " + bestieNm, bestieImg);
     });
 };
 
