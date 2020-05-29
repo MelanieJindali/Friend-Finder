@@ -8,7 +8,32 @@ module.exports = function(app) {
 
     // API POST requests
     app.post("/api/friends", function(req, res) {
-        friends.push(req.body);
-    })
-}
+        var newScores = req.body.scores;
+        var bestie = 0; // Initial index
+        var minDiff = 1000; // Initial value for comparison
+
+
+        // Go through friends list
+        for (var i = 0; i < friends.length; i++) {
+            var totalDiff = 0;
+        
+            // Compare scores
+            for (var j = 0; j < newScores.length; j++) {
+                totalDiff += (Math.abs(parseInt(friends[i].scores[j])) - parseInt((newScores[j])));
+            };
+
+            // Setting new vals to variables for the next iterated comparison
+            if (totalDiff < minDiff) {
+                bestie = i;
+                minDiff = totalDiff;
+            };
+        };
+
+        // console.log("Total difference: " + diff)
+
+        friends.push(req.body); // Add new friend to friends array
+        res.json(friends[bestie]); // Send back response to browser the best friend match
+        console.log("Your new best friend is: " + bestie);
+    });
+};
 
